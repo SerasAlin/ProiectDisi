@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Car details</title>
+    <th:block th:replace="fragments/head :: head">...</th:block>
+</head>
+<body>
+<div th:replace="fragments/menu :: menu">
+    menu to replace
+</div>
+
+
+<!--body of this view, here goes the content-->
+<div class="container">
+    <p>
+        <span>ID: </span>
+        <span th:text="${user.id}">id</span>
+    </p>
+    <p>
+        <span>USERNAME: </span>
+        <span th:text="${user.username}">username</span>
+    </p>
+    <p>
+        <span>PASSWORD: </span>
+        <span th:text="${user.password}">password</span>
+    </p>
+    <p>
+        <span>ROLE: </span>
+        <span th:text="${user.role}">role</span>
+    </p>
+</div>
+
+
+<!--footer to insert in this view-->
+<div th:replace="fragments/footer :: footer">
+    footer to replace
+</div>
+</body>
+</html>

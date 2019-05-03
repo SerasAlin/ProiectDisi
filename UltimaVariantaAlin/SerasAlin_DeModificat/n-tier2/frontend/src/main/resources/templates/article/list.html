@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Article list</title>
+    <th:block th:replace="fragments/head :: head">...</th:block>
+</head>
+<body>
+<div th:replace="fragments/menu :: menu">
+    menu to replace
+</div>
+
+
+<!--body of this view, here goes the content-->
+<div class="container">
+    <li class="nav-item">
+        <a class="nav-link" th:href="${#mvc.url('AC#create').build()}">ArticlesCreate</a>
+    </li>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>TITLE</th>
+            <th>ABSTRACT</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:if="${articles.isEmpty()}">
+            <td colspan="3">no articles</td>
+        </tr>
+        <tr th:unless="${articles.isEmpty()}" th:each="article : ${articles}">
+            <td>[[${article.id}]]</td>
+            <td>
+                <a th:href="${#mvc.url('AC#details').arg(0, article.id).build()}">
+                    [[${article.title}]]
+                </a>
+            </td>
+            <td>[[${article.abstr}]]</td>
+            <td>
+                <a class="btn btn-info" th:href="${#mvc.url('AC#getEdit').arg(0, article.id).build()}">Edit
+                </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <form th:action="@{/article/rel}" method="post">
+        <div class="form-group">
+            <label th:for="name">Category Name</label>
+            <input type="text" class="form-control" name="name" id="name" placeholder="Category Name">
+        </div>
+        <button class="btn" type="submit">Find</button>
+    </form>
+
+
+
+
+</div>
+</body>
+</html>

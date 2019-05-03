@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/backend.iml" filepath="$PROJECT_DIR$/.idea/modules/backend.iml" group="backend" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/backend/backend_main.iml" filepath="$PROJECT_DIR$/.idea/modules/backend/backend_main.iml" group="backend" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/backend/backend_test.iml" filepath="$PROJECT_DIR$/.idea/modules/backend/backend_test.iml" group="backend" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.ps-n-tier_main.iml" filepath="$PROJECT_DIR$/.idea/modules/com.ps-n-tier_main.iml" group="n-tier" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.ps-n-tier_test.iml" filepath="$PROJECT_DIR$/.idea/modules/com.ps-n-tier_test.iml" group="n-tier" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/common.iml" filepath="$PROJECT_DIR$/.idea/modules/common.iml" group="common" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/common/common_main.iml" filepath="$PROJECT_DIR$/.idea/modules/common/common_main.iml" group="common" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/common/common_test.iml" filepath="$PROJECT_DIR$/.idea/modules/common/common_test.iml" group="common" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/frontend.iml" filepath="$PROJECT_DIR$/.idea/modules/frontend.iml" group="frontend" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/frontend/frontend_main.iml" filepath="$PROJECT_DIR$/.idea/modules/frontend/frontend_main.iml" group="frontend" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/frontend/frontend_test.iml" filepath="$PROJECT_DIR$/.idea/modules/frontend/frontend_test.iml" group="frontend" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/n-tier.iml" filepath="$PROJECT_DIR$/.idea/modules/n-tier.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/n-tier_main.iml" filepath="$PROJECT_DIR$/.idea/modules/n-tier_main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/n-tier_test.iml" filepath="$PROJECT_DIR$/.idea/modules/n-tier_test.iml" />
+    </modules>
+  </component>
+</project>

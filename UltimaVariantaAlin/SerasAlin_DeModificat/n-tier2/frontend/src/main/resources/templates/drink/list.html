@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Drink list</title>
+    <th:block th:replace="fragments/head :: head">...</th:block>
+</head>
+<body>
+<div th:replace="fragments/menu :: menu">
+    menu to replace
+</div>
+
+
+<!--body of this view, here goes the content-->
+<div class="container">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Price</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:if="${drinks.isEmpty()}">
+            <td colspan="3">no drinks</td>
+        </tr>
+        <tr th:unless="${drinks.isEmpty()}" th:each="drink : ${drinks}">
+            <td>[[${drink.id}]]</td>
+            <td>[[${drink.name}]]</td>
+            <td>[[${drink.price}]]</td>
+            <td>
+                <a class="btn btn-info" th:href="${#mvc.url('DC#getEdit').arg(0, drink.id).build()}">Edit
+                </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+
+<!--footer to insert in this view-->
+<div th:replace="fragments/footer :: footer">
+    footer to replace
+</div>
+</body>
+</html>
