@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Order details</title>
+    <th:block th:replace="fragments/head :: head">...</th:block>
+</head>
+<body>
+<div th:replace="fragments/menu :: menu">
+    menu to replace
+</div>
+
+
+<!--body of this view, here goes the content-->
+<div class="container">
+    <p>
+        <span>ID: </span>
+        <span th:text="${order.id}">id</span>
+    </p>
+    <p>
+        <span>PIZZA: </span>
+    <ul>
+        <a th:href="'/pizza/' + ${order.pizza.id}">[[${order.pizza.id}]]</a>
+    </ul>
+    </p>
+    <p>
+        <span>VOUCHER: </span>
+    <ul>
+        <a th:href="'/voucher/' + ${order.voucher.id}">[[${order.voucher.id}]]</a>
+    </ul>
+    </p>
+    <p>
+        <span>DRINK: </span>
+    <ul>
+        <a th:href="'/drink/' + ${order.drink.id}">[[${order.drink.id}]]</a>
+    </ul>
+    </p>
+    <p>
+        <span>ADDRESS: </span>
+    <ul>
+        <a th:href="'/address/' + ${order.address.id}">[[${order.address.id}]]</a>
+    </ul>
+    </p>
+
+
+</div>
+
+
+<!--footer to insert in this view-->
+<div th:replace="fragments/footer :: footer">
+    footer to replace
+</div>
+</body>
+</html>

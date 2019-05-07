@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Pizza Create</title>
+    <th:block th:replace="fragments/head :: head">...</th:block>
+</head>
+<body>
+<div th:replace="fragments/menu :: menu">
+    menu to replace
+</div>
+
+
+<!--body of this view, here goes the content-->
+<div class="container">
+    <form th:action="@{/pizza/save}" method="post" th:object="${pizza}">
+        <div class="form-group">
+            <label th:for="name">Pizza Name</label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="Pizza Name">
+            <label th:for="quantity">Pizza Quantity</label>
+            <input type="text" class="form-control" id="quantity" name="quantity" placeholder="Pizza Quantity">
+            <label th:for="price">Pizza Price</label>
+            <input type="text" class="form-control" id="price" name="price" placeholder="Pizza Price">
+            <label th:for="categ">Pizza Categ</label>
+            <input type="text" class="form-control" id="categ" name="categ" placeholder="Pizza Categ">
+            <label th:for="categ">Pizza Related</label>
+            <input type="text" class="form-control" id="related" name="related" placeholder="Pizza Related">
+            <!--   <div class="form-group">
+                 <label th:for="categ">Pizza Categ</label>
+                  <select id="categ" th:field="*{categ}" class="form-control">
+                      <option th:each="categ : ${categs}"
+                              th:value="${categ.id}" th:text="${categ.name}">
+                      </option>
+                  </select>
+              </div>  -->
+      <!--  <div class="form-group">
+            <label th:for="related">Related</label>
+            <select multiple th:field="*{related}" class="form-control">
+                <option th:each="pizza : ${pizzas}"
+                        th:value="${pizza.id}" th:text="${pizza.id}">
+                </option>
+            </select>
+        </div> -->
+        </div>
+        <button class="btn" type="submit">Save</button>
+    </form>
+</div>
+
+
+<!--footer to insert in this view-->
+<div th:replace="fragments/footer :: footer">
+    footer to replace
+</div>
+</body>
+</html>

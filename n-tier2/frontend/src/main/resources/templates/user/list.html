@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>User list</title>
+    <th:block th:replace="fragments/head :: head">...</th:block>
+</head>
+<body>
+<div th:replace="fragments/menu :: menu">
+    menu to replace
+</div>
+
+
+<!--body of this view, here goes the content-->
+<div class="container">
+    <li class="nav-item">
+        <a class="nav-link" th:href="${#mvc.url('UC#create').build()}">Create nre user</a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link" th:href="${#mvc.url('BC#create').build()}">Create new bug</a>
+    </li>
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Username</th>
+            <!--<th>Password</th>-->
+            <th>Role</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:if="${users.isEmpty()}">
+            <td colspan="4">no users</td>
+        </tr>
+        <tr th:unless="${users.isEmpty()}" th:each="user : ${users}">
+            <td>[[${user.id}]]</td>
+            <td>[[${user.username}]]</td>
+            <!--<td>[[${user.password}]]</td>-->
+            <td>[[${user.role}]]</td>
+            <td>
+                <a class="btn btn-info" th:href="${#mvc.url('UC#openEdit').arg(0, user.id).build()}">Edit
+                </a>
+            </td>
+        </tr>
+
+        </tbody>
+    </table>
+</div>
+
+
+<!--footer to insert in this view-->
+<div th:replace="fragments/footer :: footer">
+    footer to replace
+</div>
+</body>
+</html>

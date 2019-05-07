@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Order list</title>
+    <th:block th:replace="fragments/head :: head">...</th:block>
+</head>
+<body>
+<div th:replace="fragments/menu :: menu">
+    menu to replace
+</div>
+
+
+<!--body of this view, here goes the content-->
+<div class="container">
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>CreatedBy</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:if="${bugs.isEmpty()}">
+            <td colspan="2">no orders</td>
+        </tr>
+        <tr th:unless="${bug.isEmpty()}" th:each="bug : ${bug}">
+            <td><a th:href="${#mvc.url('BC#details').arg(0, bug.id).build()}">
+                [[${bug.name}]]
+            </a></td>
+            <td>[[${bug.user.getId()}]]</td>
+        </tr>
+        </tbody>
+    </table>
+
+
+
+
+
+
+</div>
+</body>
+</html>

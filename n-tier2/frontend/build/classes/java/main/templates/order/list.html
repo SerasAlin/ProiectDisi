@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Order list</title>
+    <th:block th:replace="fragments/head :: head">...</th:block>
+</head>
+<body>
+<div th:replace="fragments/menu :: menu">
+    menu to replace
+</div>
+
+
+<!--body of this view, here goes the content-->
+<div class="container">
+    <li class="nav-item">
+        <a class="nav-link" th:href="${#mvc.url('OC#create').build()}">OrderCreate</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" th:href="${#mvc.url('PC#list').build()}">PizzaList</a>
+    </li>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Pizza</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:if="${orders.isEmpty()}">
+            <td colspan="2">no orders</td>
+        </tr>
+        <tr th:unless="${orders.isEmpty()}" th:each="order : ${orders}">
+            <td><a th:href="${#mvc.url('OC#details').arg(0, order.id).build()}">
+                [[${order.id}]]
+            </a></td>
+            <td>[[${order.pizza.getName()}]]</td>
+        </tr>
+        </tbody>
+    </table>
+
+   <form th:action="@{/order/total}" method="post">
+        <div class="form-group">
+            <label th:for="id">Order Id</label>
+            <input type="text" class="form-control" name="id" id="id" placeholder="Order Id">
+        </div>
+        <button class="btn" type="submit">Total</button>
+    </form>
+
+
+
+
+</div>
+</body>
+</html>

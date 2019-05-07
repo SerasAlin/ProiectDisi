@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Pizza details</title>
+    <th:block th:replace="fragments/head :: head">...</th:block>
+</head>
+<body>
+<div th:replace="fragments/menu :: menu">
+    menu to replace
+</div>
+
+
+<!--body of this view, here goes the content-->
+<div class="container">
+    <p>
+        <span>ID: </span>
+        <span th:text="${pizza.id}">id</span>
+    </p>
+    <p>
+        <span>NAME: </span>
+        <span th:text="${pizza.name}">name</span>
+    </p>
+    <p>
+        <span>QUANTITY: </span>
+        <span th:text="${pizza.quantity}">quantity</span>
+    </p>
+    <p>
+        <span>PRICE: </span>
+        <span th:text="${pizza.price}">price</span>
+    </p>
+    <p>
+        <span>CATEGS: </span>
+    <ul>
+        <a th:href="'/categ/' + ${pizza.categ.id}">[[${pizza.categ.id}]]</a>
+    </ul>
+    </p>
+    <p>
+        <span>RELATED (list): </span>
+    </p>
+    <ul>
+        <li th:each="pizza : ${pizza.related}">
+            <a th:href="'/pizza/' + ${pizza.id}">[[${pizza.id}]]</a>
+        </li>
+    </ul>
+</div>
+
+
+<!--footer to insert in this view-->
+<div th:replace="fragments/footer :: footer">
+    footer to replace
+</div>
+</body>
+</html>
