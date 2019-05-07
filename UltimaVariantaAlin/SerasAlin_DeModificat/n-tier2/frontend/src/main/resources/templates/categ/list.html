@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Categ list</title>
+    <th:block th:replace="fragments/head :: head">...</th:block>
+</head>
+<body>
+<div th:replace="fragments/menu :: menu">
+    menu to replace
+</div>
+
+
+<!--body of this view, here goes the content-->
+<div class="container">
+    <li class="nav-item">
+        <a class="nav-link" th:href="${#mvc.url('CC#create').build()}">CategCreate</a>
+    </li>
+  <!--  <li class="nav-item">
+        <a class="nav-link" th:href="${#mvc.url('PC#create').build()}">PizzaCreate</a>
+    </li> -->
+    <li class="nav-item">
+        <a class="nav-link" th:href="${#mvc.url('DC#create').build()}">DrinkCreate</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" th:href="${#mvc.url('VC#create').build()}">VoucherCreate</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" th:href="${#mvc.url('UC#list').build()}">UserList</a>
+    </li>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:if="${categs.isEmpty()}">
+            <td colspan="2">no categs</td>
+        </tr>
+        <tr th:unless="${categs.isEmpty()}" th:each="categ : ${categs}">
+            <td>[[${categ.id}]]</td>
+            <td>[[${categ.nume}]]</td>
+            <td>
+                <a class="btn btn-info" th:href="${#mvc.url('CC#getEdit').arg(0, categ.id).build()}">Edit
+                </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+
+<!--footer to insert in this view-->
+<div th:replace="fragments/footer :: footer">
+    footer to replace
+</div>
+</body>
+</html>

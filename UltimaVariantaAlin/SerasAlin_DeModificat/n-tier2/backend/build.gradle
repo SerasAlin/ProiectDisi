@@ -1,0 +1,58 @@
+buildscript {
+    ext {
+        springBootVersion = '2.0.1.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+plugins {
+    id "net.ltgt.apt" version "0.15"
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+group 'com.ps'
+version '1.0-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+allprojects {
+    apply plugin: 'idea'
+    idea {
+        module {
+            outputDir file('build/classes/main')
+            testOutputDir file('build/classes/test')
+        }
+    }
+    if(project.convention.findPlugin(JavaPluginConvention)) {
+        // Change the output directory for the main and test source sets back to the old path
+        sourceSets.main.output.classesDir = new File(buildDir, "classes/main")
+        sourceSets.test.output.classesDir = new File(buildDir, "classes/test")
+    }
+}
+
+dependencies {
+    compile project(':common')
+
+
+    compile('org.springframework.boot:spring-boot-starter-web')
+    compile('org.springframework.boot:spring-boot-starter-data-jpa')
+    compile('org.mapstruct:mapstruct-jdk8:1.2.0.Final')
+    compile('org.mapstruct:mapstruct-processor:1.2.0.Final')
+    apt 'org.mapstruct:mapstruct-processor:1.2.0.Final'
+    compile('mysql:mysql-connector-java:5.1.6')
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-mail', version: '1.2.0.RELEASE'
+   // compile 'org.hibernate:hibernate-validator'
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+}

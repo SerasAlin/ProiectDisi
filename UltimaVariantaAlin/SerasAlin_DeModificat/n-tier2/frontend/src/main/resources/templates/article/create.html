@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Article Create</title>
+    <th:block th:replace="fragments/head :: head">...</th:block>
+</head>
+<body>
+<div th:replace="fragments/menu :: menu">
+    menu to replace
+</div>
+
+
+<!--body of this view, here goes the content-->
+<div class="container">
+    <form th:action="@{/article/create}" method="post" th:object="${article}">
+        <div class="form-group">
+            <input type="hidden"  th:field="*{id}">
+        </div>
+        <div class="form-group">
+            <label th:for="name">Article Title</label>
+            <input type="text" class="form-control" th:field="*{title}" placeholder="Article Title">
+        </div>
+        <div class="form-group">
+            <label th:for="name">Article Abstract</label>
+            <input type="text" class="form-control" th:field="*{abstr}" placeholder="Article Abstract">
+        </div>
+        <div class="form-group">
+            <label th:for="author">Author</label>
+            <select id="author" th:field="*{author}" class="form-control">
+                <option th:each="user : ${users}"
+                        th:value="${user.id}" th:text="${user.username}"></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label th:for="categ">Categ</label>
+            <select id="categ" th:field="*{categ}" class="form-control">
+                <option th:each="categ : ${categs}"
+                        th:value="${categ.id}" th:text="${categ.nume}">
+                </option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label th:for="related">Related</label>
+            <select multiple th:field="*{related}" class="form-control">
+                <option th:each="article : ${articles}"
+                        th:value="${article.id}" th:text="${article.title}">
+                </option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label th:for="name">Article Body</label>
+            <input type="text" class="form-control" th:field="*{body}" placeholder="Article Body">
+        </div>
+        <button class="btn" type="submit">Save</button>
+    </form>
+</div>
+
+
+<!--footer to insert in this view-->
+<div th:replace="fragments/footer :: footer">
+    footer to replace
+</div>
+</body>
+</html>

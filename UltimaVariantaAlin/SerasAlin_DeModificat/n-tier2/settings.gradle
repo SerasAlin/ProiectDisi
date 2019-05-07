@@ -1,0 +1,6 @@
+rootProject.name = 'n-tier'
+
+include 'backend'
+include 'frontend'
+include 'common'
+

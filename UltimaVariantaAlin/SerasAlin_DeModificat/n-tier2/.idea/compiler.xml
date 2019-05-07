@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="backend_main" target="1.8" />
+      <module name="backend_test" target="1.8" />
+      <module name="com.ps-n-tier_main" target="1.8" />
+      <module name="com.ps-n-tier_test" target="1.8" />
+      <module name="common_main" target="1.8" />
+      <module name="common_test" target="1.8" />
+      <module name="frontend_main" target="1.8" />
+      <module name="frontend_test" target="1.8" />
+      <module name="n-tier2_main" target="1.8" />
+      <module name="n-tier2_test" target="1.8" />
+      <module name="n-tier_main" target="1.8" />
+      <module name="n-tier_test" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

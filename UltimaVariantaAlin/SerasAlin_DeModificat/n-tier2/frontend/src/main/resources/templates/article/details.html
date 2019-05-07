@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Article details</title>
+    <th:block th:replace="fragments/head :: head">...</th:block>
+</head>
+<body>
+<div th:replace="fragments/menu :: menu">
+    menu to replace
+</div>
+
+
+<!--body of this view, here goes the content-->
+<div class="container">
+    <p>
+        <span>ID: </span>
+        <span th:text="${article.id}">id</span>
+    </p>
+    <p>
+        <span>TITLE: </span>
+        <span th:text="${article.title}">title</span>
+    </p>
+    <p>
+        <span>ABSTRACT: </span>
+        <span th:text="${article.abstr}">abstr</span>
+    </p>
+    <p>
+        <span>AUTHOR: </span>
+        <span th:text="${article.author.name}">author</span>
+    </p>
+    <p>
+        <span>CATEGS: </span>
+    <ul>
+            <a th:href="'/categ/' + ${article.categ.id}">[[${article.categ.id}]]</a>
+    </ul>
+    </p>
+    <p>
+        <span>BODY: </span>
+        <span th:text="${article.body}">body</span>
+    </p>
+    <p>
+        <span>RELATED (list): </span>
+    </p>
+    <ul>
+        <li th:each="article : ${article.related}">
+            <a th:href="'/article/' + ${article.id}">[[${article.id}]]</a>
+        </li>
+    </ul>
+</div>
+
+
+<!--footer to insert in this view-->
+<div th:replace="fragments/footer :: footer">
+    footer to replace
+</div>
+</body>
+</html>
