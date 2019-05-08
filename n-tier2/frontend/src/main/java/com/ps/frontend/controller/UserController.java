@@ -67,8 +67,13 @@ public class UserController {
 
     @GetMapping("/create")
     public ModelAndView openCreate(ModelAndView mav) {
-        mav.addObject("user", new UserDTO());
-        mav.setViewName("user/create");
+
+        if(contextHolder.getLoggedIn().getRole().toString().equals("ADMINISTRATOR")) {
+            mav.addObject("user", new UserDTO());
+            mav.setViewName("user/create");
+        }
+        else
+            mav.setViewName("user/error");
         return mav;
     }
 
@@ -94,10 +99,15 @@ public class UserController {
     @GetMapping("/{id}/edit")
     public ModelAndView openEdit(@PathVariable("id") Long id, ModelAndView mav) {
         UserDTO user = userGateway.findById(id);
+        if(contextHolder.getLoggedIn().getRole().toString().equals("ADMINISTRATOR")) {
 
-        mav.addObject("user", user);
-        mav.setViewName("user/edit");
+            mav.addObject("user", user);
+            mav.setViewName("user/edit");
+        }else{
+            mav.setViewName("user/error");
+        }
         return mav;
+
 
     }
 
@@ -116,7 +126,12 @@ public class UserController {
     }
 
 
-
+    @GetMapping("/logOut")
+    public ModelAndView logOut(ModelAndView mav){
+        contextHolder.setLoggedIn(null);
+        mav.setViewName("user/logIN");
+        return mav;
+    }
 
     @GetMapping("/logIN")
     public ModelAndView openLog(ModelAndView mav){

@@ -29,7 +29,7 @@
             <td colspan="4">no bugs</td>
         </tr>
         <tr th:unless="${bugs.isEmpty()}" th:each="bug : ${bugs}">
-         
+
             <td>[[${bug.name}]]</td>
             <td>[[${bug.description}]]</td>
             <td>[[${bug.status}]]</td>

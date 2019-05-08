@@ -7,9 +7,11 @@
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light" th:fragment="menu">
     <a class="navbar-brand" href="#">Navbar</a>
+    <form th:action="@{/user/logOut}" method="get">
     <button class="btn"  type="submit">
-        <a href="/user/logIN">Logout</a>
+       Logout
     </button>
+    </form>
     </div>
 </nav>
 
