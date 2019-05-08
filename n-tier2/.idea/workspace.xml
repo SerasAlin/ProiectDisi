@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="56e96634-528b-4d86-959b-d340811b1e1e" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/main/resources/templates/user/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/main/resources/templates/user/list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/main/java/com/ps/frontend/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/main/java/com/ps/frontend/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/main/resources/templates/fragments/menu.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/main/resources/templates/fragments/menu.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/main/resources/templates/user/logIN.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/main/resources/templates/user/logIN.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -111,20 +112,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/frontend/src/main/resources/templates/user/edit.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="14">
-              <caret line="105" column="6" selection-start-line="105" selection-start-column="6" selection-end-line="105" selection-end-column="6" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/frontend/src/main/resources/templates/user/list.html">
+        <entry file="file://$PROJECT_DIR$/frontend/src/main/resources/templates/user/GuestList.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="322">
-              <caret line="44" column="20" lean-forward="true" selection-start-line="44" selection-start-column="20" selection-end-line="44" selection-end-column="20" />
+            <state relative-caret-position="115">
+              <caret line="14" column="23" selection-start-line="14" selection-start-column="23" selection-end-line="14" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -151,6 +143,7 @@
       <find>edit</find>
       <find>order</find>
       <find>save</find>
+      <find>guest</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -193,8 +186,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/common/src/main/java/com/ps/common/dto/OrderDTO.java" />
-        <option value="$PROJECT_DIR$/frontend/src/main/java/com/ps/frontend/controller/command/OrderCommand.java" />
         <option value="$PROJECT_DIR$/frontend/src/main/java/com/ps/frontend/gateway/EmailGateway.java" />
         <option value="$PROJECT_DIR$/backend/src/main/java/com/ps/backend/rest/EmailRestApi.java" />
         <option value="$PROJECT_DIR$/backend/src/main/java/com/ps/backend/rest/impl/EmailRestController.java" />
@@ -207,7 +198,6 @@
         <option value="$PROJECT_DIR$/common/src/main/java/com/ps/common/enumeration/UserRole.java" />
         <option value="$PROJECT_DIR$/frontend/src/main/resources/templates/user/save.html" />
         <option value="$PROJECT_DIR$/frontend/src/main/resources/templates/user/create.html" />
-        <option value="$PROJECT_DIR$/frontend/src/main/resources/templates/user/logIN.html" />
         <option value="$PROJECT_DIR$/backend/src/main/java/com/ps/backend/entity/Categ.java" />
         <option value="$PROJECT_DIR$/backend/src/main/java/com/ps/backend/entity/Bug.java" />
         <option value="$PROJECT_DIR$/backend/src/main/java/com/ps/backend/mapper/ArticleMapper.java" />
@@ -239,11 +229,14 @@
         <option value="$PROJECT_DIR$/backend/src/main/java/com/ps/backend/service/impl/BugServiceImpl.java" />
         <option value="$PROJECT_DIR$/frontend/src/main/resources/templates/bug/edit.html" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/.datagrid/cell" />
-        <option value="$PROJECT_DIR$/frontend/src/main/resources/templates/bug/list.html" />
-        <option value="$PROJECT_DIR$/frontend/src/main/java/com/ps/frontend/controller/UserController.java" />
         <option value="$PROJECT_DIR$/frontend/src/main/resources/templates/bug/create.html" />
         <option value="$PROJECT_DIR$/frontend/src/main/java/com/ps/frontend/controller/BugController.java" />
         <option value="$PROJECT_DIR$/frontend/src/main/resources/templates/user/list.html" />
+        <option value="$PROJECT_DIR$/frontend/src/main/resources/templates/bug/list.html" />
+        <option value="$PROJECT_DIR$/frontend/src/main/resources/templates/fragments/menu.html" />
+        <option value="$PROJECT_DIR$/frontend/src/main/resources/templates/user/logIN.html" />
+        <option value="$PROJECT_DIR$/frontend/src/main/java/com/ps/frontend/controller/UserController.java" />
+        <option value="$PROJECT_DIR$/frontend/src/main/resources/templates/user/GuestList.html" />
       </list>
     </option>
   </component>
@@ -538,6 +531,16 @@
               <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="fragments" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="n-tier" type="b2602c69:ProjectViewProjectNode" />
+              <item name="n-tier2" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="frontend" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
               <item name="user" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -555,7 +558,7 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1557319734884" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1557330153093" />
     <property name="database.console.LAST_STATE" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -796,18 +799,18 @@
       <workItem from="1556905706877" duration="8987000" />
       <workItem from="1557303720830" duration="10958000" />
       <workItem from="1557315574076" duration="4176000" />
-      <workItem from="1557327881994" duration="506000" />
+      <workItem from="1557327881994" duration="2238000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="59286000" />
+    <option name="totallyTimeSpent" value="61018000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19402985" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1641791" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="3" />
@@ -846,7 +849,7 @@
       <window_info anchor="right" id="Theme Preview" order="7" />
       <window_info anchor="right" id="Coverage" order="8" sideWeight="0.50706714" side_tool="true" weight="0.14552239" />
       <window_info anchor="right" id="Palette&#9;" order="9" />
-      <window_info anchor="right" id="Database" order="10" visible="true" weight="0.15884861" />
+      <window_info anchor="right" id="Database" order="10" visible="true" weight="0.1369936" />
       <window_info anchor="right" id="Bean Validation" order="11" />
       <window_info anchor="right" id="Maven" order="12" weight="0.32995737" />
     </layout>
@@ -892,16 +895,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/frontend/src/main/resources/templates/user/logIN.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-webmvc/5.0.5.RELEASE/ad2966a310f11e6008aae7e19c10de2f4e88d115/spring-webmvc-5.0.5.RELEASE-sources.jar!/org/springframework/web/servlet/mvc/method/annotation/RequestMappingHandlerAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="884" selection-start-line="884" selection-end-line="884" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-webmvc/5.0.5.RELEASE/ad2966a310f11e6008aae7e19c10de2f4e88d115/spring-webmvc-5.0.5.RELEASE-sources.jar!/org/springframework/web/servlet/DispatcherServlet.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
@@ -983,12 +976,6 @@
     <entry file="file://$PROJECT_DIR$/frontend/src/main/resources/templates/index.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/src/main/resources/templates/fragments/head.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/src/main/resources/templates/fragments/menu.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/backend/src/main/java/com/ps/backend/BackendApplication.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="207">
@@ -1000,13 +987,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="207">
           <caret line="15" column="1" lean-forward="true" selection-start-line="15" selection-start-column="1" selection-end-line="15" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/src/main/java/com/ps/frontend/log/impl/ContextHolderImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
         </state>
       </provider>
     </entry>
@@ -1093,13 +1073,6 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/src/main/resources/templates/bug/list.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="16" column="80" selection-start-line="16" selection-start-column="80" selection-end-line="16" selection-end-column="80" />
         </state>
       </provider>
     </entry>
@@ -1192,13 +1165,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/src/main/java/com/ps/frontend/controller/UserController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1806">
-          <caret line="139" column="5" selection-start-line="139" selection-start-column="5" selection-end-line="139" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/frontend/src/main/java/com/ps/frontend/controller/command/BugCommand.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-92">
@@ -1246,6 +1212,55 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/src/main/resources/templates/fragments/head.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/src/main/resources/templates/user/list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="299">
+          <caret line="43" column="99" lean-forward="true" selection-start-line="43" selection-start-column="40" selection-end-line="43" selection-end-column="99" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/src/main/resources/templates/user/edit.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-262">
+          <caret line="105" column="6" selection-start-line="105" selection-start-column="6" selection-end-line="105" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/src/main/java/com/ps/frontend/log/impl/ContextHolderImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="276">
+          <caret line="16" column="13" lean-forward="true" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+          <folding>
+            <element signature="e#415#416#0" expanded="true" />
+            <element signature="e#445#446#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/src/main/resources/templates/fragments/menu.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="276">
+          <caret line="12" column="10" lean-forward="true" selection-start-line="12" selection-start-column="10" selection-end-line="12" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/src/main/resources/templates/bug/list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="38" column="16" lean-forward="true" selection-end-line="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/src/main/resources/templates/user/logIN.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="7" column="32" selection-start-line="7" selection-start-column="23" selection-end-line="7" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/frontend/src/main/java/com/ps/frontend/gateway/impl/BugGatewayImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="297">
@@ -1258,25 +1273,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/frontend/src/main/java/com/ps/frontend/controller/BugController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="387">
-          <caret line="112" column="37" lean-forward="true" selection-start-line="112" selection-start-column="37" selection-end-line="112" selection-end-column="37" />
+        <state relative-caret-position="295">
+          <caret line="21" column="31" selection-start-line="21" selection-end-line="22" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/src/main/resources/templates/user/edit.html">
+    <entry file="file://$PROJECT_DIR$/frontend/src/main/java/com/ps/frontend/controller/UserController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="14">
-          <caret line="105" column="6" selection-start-line="105" selection-start-column="6" selection-end-line="105" selection-end-column="6" />
+        <state relative-caret-position="-782">
+          <caret line="30" column="36" selection-start-line="30" selection-start-column="36" selection-end-line="30" selection-end-column="36" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/src/main/resources/templates/user/list.html">
+    <entry file="file://$PROJECT_DIR$/frontend/src/main/resources/templates/user/GuestList.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="44" column="20" lean-forward="true" selection-start-line="44" selection-start-column="20" selection-end-line="44" selection-end-column="20" />
+        <state relative-caret-position="115">
+          <caret line="14" column="23" selection-start-line="14" selection-start-column="23" selection-end-line="14" selection-end-column="23" />
         </state>
       </provider>
     </entry>

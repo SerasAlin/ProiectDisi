@@ -1,8 +1,10 @@
 package com.ps.frontend.controller;
 
+import com.ps.common.dto.BugDTO;
 import com.ps.common.dto.UserDTO;
 import com.ps.common.enumeration.UserRole;
 import com.ps.frontend.controller.command.UserCommand;
+import com.ps.frontend.gateway.BugGateway;
 import com.ps.frontend.gateway.UserGateway;
 import com.ps.frontend.log.ContextHolder;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,11 +21,14 @@ public class UserController {
 
     private final UserGateway userGateway;
     private final ContextHolder contextHolder;
+    private final BugGateway bugGateway;
+
 
     @Autowired
-    public UserController(UserGateway userGateway , ContextHolder contextHolder) {
+    public UserController(UserGateway userGateway , ContextHolder contextHolder,BugGateway bugGateway) {
         this.userGateway = userGateway;
         this.contextHolder=contextHolder;
+        this.bugGateway= bugGateway;
     }
 
     @GetMapping("/test")
@@ -48,6 +53,15 @@ public class UserController {
 
         mav.addObject("users", all);
         mav.setViewName("user/list");
+        return mav;
+    }
+
+    @GetMapping("/GuestList")
+    public ModelAndView GuestList(ModelAndView mav) {
+        List<BugDTO> all = bugGateway.findAll();
+
+        mav.addObject("bugs", all);
+        mav.setViewName("user/GuestList");
         return mav;
     }
 
@@ -148,5 +162,6 @@ public class UserController {
 
         return userDTO;
     }
+
 
 }
