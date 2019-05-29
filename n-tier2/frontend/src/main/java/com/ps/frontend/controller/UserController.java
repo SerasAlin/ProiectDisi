@@ -49,10 +49,20 @@ public class UserController {
 
     @GetMapping("/list")
     public ModelAndView list(ModelAndView mav) {
-        List<UserDTO> all = userGateway.findAll();
+        if(contextHolder.getLoggedIn() == null){
+            mav.setViewName("user/error");
+        }
+        else if(contextHolder.getLoggedIn().getRole().toString().equals("ADMINISTRATOR") || contextHolder.getLoggedIn().getRole().toString().equals("USER")) {
+            List<UserDTO> all = userGateway.findAll();
 
-        mav.addObject("users", all);
-        mav.setViewName("user/list");
+            mav.addObject("users", all);
+            mav.setViewName("user/list");
+
+        }
+        else{
+            mav.setViewName("user/error");
+
+        }
         return mav;
     }
 
@@ -68,12 +78,15 @@ public class UserController {
     @GetMapping("/create")
     public ModelAndView openCreate(ModelAndView mav) {
 
-        if(contextHolder.getLoggedIn().getRole().toString().equals("ADMINISTRATOR")) {
+        if(contextHolder.getLoggedIn() == null || contextHolder.getLoggedIn().getRole().toString().equals("USER")){
+            mav.setViewName("user/error");
+        }
+       else if(contextHolder.getLoggedIn().getRole().toString().equals("ADMINISTRATOR")) {
             mav.addObject("user", new UserDTO());
             mav.setViewName("user/create");
         }
         else
-            mav.setViewName("user/error");
+            mav.setViewName("user/list");
         return mav;
     }
 
@@ -85,11 +98,11 @@ public class UserController {
 
         if (u==null)
         {
-            System.out.println("cacatu merge");
+            System.out.println(" merge");
             return "redirect:/user/create";
         }
         else {
-            System.out.println("cacatu nuuuu merge");
+            System.out.println(" nuuuu merge");
 
             return "redirect:/user/list";
         }
@@ -99,7 +112,10 @@ public class UserController {
     @GetMapping("/{id}/edit")
     public ModelAndView openEdit(@PathVariable("id") Long id, ModelAndView mav) {
         UserDTO user = userGateway.findById(id);
-        if(contextHolder.getLoggedIn().getRole().toString().equals("ADMINISTRATOR")) {
+        if(contextHolder.getLoggedIn() == null){
+            mav.setViewName("user/error");
+        }
+        else if(contextHolder.getLoggedIn().getRole().toString().equals("ADMINISTRATOR")) {
 
             mav.addObject("user", user);
             mav.setViewName("user/edit");
@@ -140,31 +156,31 @@ public class UserController {
     }
 
     @PostMapping("/logIN")
-    public ModelAndView log(@RequestParam("username") String username, @RequestParam("password") String password, ModelAndView mav){
+        public ModelAndView log(@RequestParam("username") String username, @RequestParam("password") String password, ModelAndView mav){
 
-        UserDTO userDTO=userGateway.logIN(username,password);
+            UserDTO userDTO=userGateway.logIN(username,password);
 
-        contextHolder.setLoggedIn(userDTO);
+            contextHolder.setLoggedIn(userDTO);
 
-        String s="";
+            String s="";
 
-        if(userDTO==null)
-        {
+            if(userDTO==null)
+            {
 
-            s="redirect:/user/logIN";
-        }
-        else if(userDTO.getRole().equals(UserRole.ADMINISTRATOR))
-        {
+                s="redirect:/user/logIN";
+            }
+            else if(userDTO.getRole().equals(UserRole.ADMINISTRATOR))
+            {
 
-            s="redirect:/user/list";
-        }
-        else if (userDTO.getRole().equals(UserRole.USER))
-        {
+                s="redirect:/user/list";
+            }
+            else if (userDTO.getRole().equals(UserRole.USER))
+            {
 
-            s="redirect:/user/list";
-        }
+                s="redirect:/user/list";
+            }
 
-        return new ModelAndView(s);
+            return new ModelAndView(s);
 
     }
 

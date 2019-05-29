@@ -47,6 +47,26 @@ public class BugGatewayImpl implements BugGateway {
         return Arrays.asList(response);
     }
 
+
+    public List<BugDTO> findByName(String name) {
+        LOGGER.info("Executing findByName method" + name);
+        String url = restProperties.getUrl() + URL + "/find" ;
+        RestTemplate restTemplate = new RestTemplate();
+        BugDTO[] response = restTemplate.getForObject(url, BugDTO[].class);
+        return Arrays.asList(response);
+    }
+
+    @Override
+    public List<BugDTO> filterByStatus(String status) {
+        LOGGER.info("Executing filterByStatus method" + status);
+        String url = restProperties.getUrl() + URL + "/" + status + "/filter" ;
+        RestTemplate restTemplate = new RestTemplate();
+        BugDTO[] response = restTemplate.getForObject(url, BugDTO[].class);
+        return Arrays.asList(response);
+    }
+
+
+
     @Override
     public Long save(BugDTO bugDTO) {
         LOGGER.info("Executing save method");

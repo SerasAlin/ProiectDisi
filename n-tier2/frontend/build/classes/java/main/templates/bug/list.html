@@ -1,5 +1,76 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<style>
+    .indent{
+        margin: 1%;
+    }
+    .indent2{
+        margin-left: 21%;
+        margin-top: 5px;
+
+    }
+
+    /* Style the search field */
+    form.example input[type=text] {
+        margin-left: 20%;
+        font-size: 17px;
+        border: 1px solid grey;
+        float: left;
+        width: 10%;
+        background: #f1f1f1;
+    }
+
+    /* Style the submit button */
+    form.example button {
+        float: left;
+        width: 2%;
+
+        background: #2196F3;
+        color: white;
+        font-size: 17px;
+        border: 1px solid grey;
+        border-left: none; /* Prevent double borders */
+        cursor: pointer;
+    }
+
+    form.example button:hover {
+        background: #0b7dda;
+    }
+
+    /* Clear floats */
+    form.example::after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+
+    .container {
+        overflow: hidden;
+    }
+
+    /* Style the buttons */
+    .btn {
+        border: none;
+        outline: none;
+        padding: 12px 16px;
+        background-color: #f1f1f1;
+        cursor: pointer;
+    }
+
+    /* Add a light grey background on mouse-over */
+    .btn:hover {
+        background-color: #ddd;
+    }
+
+    /* Add a dark background to the active button */
+    .btn.active {
+        background-color: #666;
+        color: white;
+    }
+</style>
+
+
 <head>
     <meta charset="UTF-8">
     <title>User list</title>
@@ -8,6 +79,36 @@
 <body>
 <div th:replace="fragments/menu :: menu">
     menu to replace
+</div>
+
+<div class="indent">
+    <!-- Load icon library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- The form -->
+    <form class="example" action="find">
+        <input type="text" placeholder="Search Bugs" name="name">
+        <button type="submit"><i class="fa fa-search"></i></button>
+    </form>
+</div>
+
+<div class="indent2">
+    <!-- Control buttons -->
+    <div id="myBtnContainer">
+        <span>Filter bug by state: </span>
+        <div>
+
+            <a class="btn" th:href="${#mvc.url('BC#list').build()}" > Show all</a>
+           <a class="btn"  th:href="${#mvc.url('BC#findByName').arg(0, 'processing').build()}"> Processing</a>
+            <a class="btn" th:href="${#mvc.url('BC#findByName').arg(0, 'closed').build()}" > Closed</a>
+            <a class="btn" th:href="${#mvc.url('BC#findByName').arg(0, 'new').build()}" > New</a>
+            <a class="btn" th:href="${#mvc.url('BC#findByName').arg(0, 'false').build()}" > False</a>
+
+
+    </div>
+
+</div>
+
 </div>
 
 
@@ -21,7 +122,7 @@
         <thead>
         <tr>
             <th>ID</th>
-            <th>Mame</th>
+            <th>Name</th>
             <th>Description</th>
             <th>Status</th>
 
@@ -31,7 +132,7 @@
         <tr th:if="${bugs.isEmpty()}">
             <td colspan="4">no bugs</td>
         </tr>
-        <tr th:unless="${bugs.isEmpty()}" th:each="bug : ${bugs}">
+        <tr th:unless="${bugs.isEmpty()}" th:each="bug : ${bugs}" >
             <td>[[${bug.id}]]</td>
             <td>[[${bug.name}]]</td>
             <td>[[${bug.description}]]</td>
@@ -44,7 +145,6 @@
                 <a class="btn btn-info">Delete
                 </a>
             </td>
-
         </tr>
 
         </tbody>

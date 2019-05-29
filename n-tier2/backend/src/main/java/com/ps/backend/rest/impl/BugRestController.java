@@ -8,6 +8,7 @@ import com.ps.common.dto.UserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -34,6 +35,16 @@ public class BugRestController implements BugRestApi {
     }
 
     @Override
+    public List<BugDTO> findByName(@RequestParam ("name") String name) {
+        return bugService.findByName(name);
+    }
+
+    @Override
+    public List<BugDTO> filterByStatus(@PathVariable("status") String status) {
+        return bugService.filterByStatus(status);
+    }
+
+    @Override
     public Long save(@RequestBody BugDTO bugDTO) {
         return bugService.save(bugDTO);
     }
@@ -42,5 +53,9 @@ public class BugRestController implements BugRestApi {
     public Long update(@PathVariable("id") Long id,@RequestBody BugDTO bugDTO) {
         return bugService.update(id,bugDTO);
     }
+
+
+
+
 
 }

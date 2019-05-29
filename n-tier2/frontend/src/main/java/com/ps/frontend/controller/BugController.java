@@ -8,17 +8,21 @@ import com.ps.common.dto.UserDTO;
 import com.ps.frontend.controller.command.BugCommand;
 import com.ps.frontend.gateway.*;
 import com.ps.frontend.log.ContextHolder;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
 @RequestMapping("/bug")
 public class BugController {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(BugController.class);
     private final BugGateway bugGateway;
     private final EmailGateway emailGateway;
     private final UserGateway userGateway;
@@ -46,10 +50,16 @@ public class BugController {
 
     @GetMapping("/{id}/edit")
     public ModelAndView openEdit(@PathVariable("id") Long id, ModelAndView mav) {
-        BugDTO bug = bugGateway.findById(id);
 
-        mav.addObject("bug", bug);
-        mav.setViewName("bug/edit");
+//        if(contextHolder.getLoggedIn() == null){
+//            mav.setViewName("user/error");
+//        }
+//        else {
+            BugDTO bug = bugGateway.findById(id);
+
+            mav.addObject("bug", bug);
+            mav.setViewName("bug/edit");
+       // }
         return mav;
 
     }
@@ -69,27 +79,56 @@ public class BugController {
 
     }
 
-
-
     @GetMapping("/list")
     public ModelAndView list(ModelAndView mav) {
         List<BugDTO> all = bugGateway.findAll();
-        List<UserDTO> users=userGateway.findAll();
 
         mav.addObject("bugs", all);
-        mav.addObject("users",users);
         mav.setViewName("bug/list");
         return mav;
     }
 
+    @GetMapping("/find")
+    public ModelAndView findByName(@RequestParam("name") String name,ModelAndView mav) {
+        List<BugDTO> all = bugGateway.findAll();
 
+        List<BugDTO> listByName = new ArrayList<>() ;
+        List<BugDTO> listByStatus = new ArrayList<>() ;
+
+        for(BugDTO bug: all){
+            if(bug.getName().equals(name)){
+                listByName.add(bug);
+            }
+        }
+
+        for(BugDTO bug: all){
+            if(bug.getStatus().equals(name)){
+                listByStatus.add(bug);
+            }
+        }
+        if(!(listByName.isEmpty())) {
+            LOGGER.info("LISTA DE BUGURI GASITA ::::::::::" + listByName);
+            mav.addObject("bugs", listByName);
+            mav.setViewName("bug/list");
+        } else if(!(listByStatus.isEmpty())) {
+            LOGGER.info("LISTA DE BUGURI GASITA ::::::::::" + listByStatus);
+            mav.addObject("bugs", listByStatus);
+            mav.setViewName("bug/list");
+        } else {
+            mav.addObject("bugs", all);
+            mav.setViewName("bug/list");
+        }
+
+
+
+        return mav;
+    }
 
     @GetMapping("/create")
     public ModelAndView openCreate(ModelAndView mav) {
         if(contextHolder.getLoggedIn()!=null) {
             mav.addObject("bug", new BugDTO());
             List<UserDTO> users = userGateway.findAll();
-
 
             mav.addObject("users", users);
 
@@ -109,6 +148,9 @@ public class BugController {
 
     @PostMapping("/save")
     public String save( BugCommand bugCommand) {
+        bugCommand.setUser(contextHolder.getLoggedIn().getId());
+        bugCommand.setEmail(contextHolder.getLoggedIn().getId());
+
         bugGateway.save(bugCommandToBugDTO(bugCommand));
         return "redirect:/bug/list" ;
     }

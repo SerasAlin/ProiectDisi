@@ -12,6 +12,7 @@ import org.springframework.mail.MailException;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -36,6 +37,41 @@ public class BugServiceImpl implements BugService {
     }
 
     @Override
+    public List<BugDTO> findByName(String name) {
+
+     List<BugDTO> all= bugRepository.findAll()
+             .stream()
+             .map(bugMapper::toDTO)
+             .collect(Collectors.toList());
+
+     List<BugDTO> myList = new ArrayList<>() ;
+
+
+     for(BugDTO bug: all){
+         if(bug.getName().equals(name)){
+             myList.add(bug);
+         }
+     }
+     return myList;
+    }
+
+    @Override
+    public List<BugDTO> filterByStatus(String status) {
+        List<BugDTO> all= bugRepository.findAll()
+                .stream()
+                .map(bugMapper::toDTO)
+                .collect(Collectors.toList());
+        List<BugDTO> myList = new ArrayList<>() ;
+
+        for(BugDTO bug: all){
+            if(bug.getStatus().equals(status)){
+                myList.add(bug);
+            }
+        }
+        return myList;
+    }
+
+    @Override
     public List<BugDTO> findAll() {
         return bugRepository.findAll()
                 .stream()
@@ -48,9 +84,6 @@ public class BugServiceImpl implements BugService {
         Bug bug= bugDTO.getId() != null ?
                 bugRepository.findById(bugDTO.getId()).orElseThrow(EntityNotFoundException::new) : new Bug();
 
-        //  order.setTotal(orderDTO.getTotal());
-
-
         bug.setName(bugDTO.getName());
         bug.setDescription(bugDTO.getDescription());
         bug.setStatus(bugDTO.getStatus());
@@ -59,13 +92,13 @@ public class BugServiceImpl implements BugService {
 
         bug.setEmailId(bugDTO.getEmail().getId());
 
-//        try {
-//            emailService.sendNotification(bug);
-//            System.out.println("Success");
-//        } catch (MailException e) {
-//            e.printStackTrace();
-//            System.out.println("fail");
-//        }
+        try {
+            emailService.sendNotification(bug);
+            System.out.println("Success");
+        } catch (MailException e) {
+            e.printStackTrace();
+            System.out.println("fail");
+        }
 
         return bugRepository.save(bug).getId();
     }

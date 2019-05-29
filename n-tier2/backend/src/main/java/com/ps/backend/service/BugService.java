@@ -10,6 +10,10 @@ public interface BugService {
 
     BugDTO findById(Long Id);
 
+    List<BugDTO> findByName(String name);
+
+    List<BugDTO> filterByStatus(String status);
+
     List<BugDTO> findAll();
 
     Long save(BugDTO bugDTO);

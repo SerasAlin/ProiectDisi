@@ -15,6 +15,12 @@ public interface BugRestApi {
     @GetMapping("/list")
     List<BugDTO> findAll();
 
+    @GetMapping("/find")
+    List<BugDTO> findByName( @RequestParam("name") String name);
+
+    @GetMapping("/{status}/filter")
+    List<BugDTO> filterByStatus(@PathVariable("status") String status);
+
     @PostMapping("/save")
     Long save(@RequestBody BugDTO bugDTO);
 

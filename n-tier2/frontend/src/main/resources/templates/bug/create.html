@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Pizza Create</title>
+    <title>Bug Create</title>
     <th:block th:replace="fragments/head :: head">...</th:block>
 </head>
 <body>
@@ -22,27 +22,12 @@
             <label th:for="status">Bug Status</label>
             <input type="text" class="form-control" id="status" name="status" placeholder="Bug Status">
 
-            <label th:for="user">User id</label>
-            <input type="text" class="form-control" id="user" name="user" placeholder="User Id">
+            <!--<label th:for="user">User id</label>-->
+            <!--<input type="text" class="form-control" id="user" name="user" placeholder="User Id">-->
 
-            <label th:for="email">User email</label>
-            <input type="text" class="form-control" id="email" name="email" placeholder="User email">
-            <!--   <div class="form-group">
-                 <label th:for="categ">Pizza Categ</label>
-                  <select id="categ" th:field="*{categ}" class="form-control">
-                      <option th:each="categ : ${categs}"
-                              th:value="${categ.id}" th:text="${categ.name}">
-                      </option>
-                  </select>
-              </div>  -->
-            <!--  <div class="form-group">
-                  <label th:for="related">Related</label>
-                  <select multiple th:field="*{related}" class="form-control">
-                      <option th:each="pizza : ${pizzas}"
-                              th:value="${pizza.id}" th:text="${pizza.id}">
-                      </option>
-                  </select>
-              </div> -->
+            <!--<label th:for="email">User email</label>-->
+            <!--<input type="text" class="form-control" id="email" name="email" placeholder="User email">-->
+
         </div>
         <button class="btn" type="submit">Save</button>
     </form>
